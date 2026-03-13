@@ -36,5 +36,8 @@
 ## Key Principle
 **Always branch before experimenting.** Keep main clean and stable while exploring on feature branches. Only merge back when the feature is solid and tested.
 
+
+## Best findings
+I realized that for my experimental projects I don't need to create a repo in Github, I can start a local repo, do local commits, if the project grows, I can take it to cloud.
 ---
 *Updated: March 13, 2026*
