@@ -1,0 +1,1 @@
+Gui, learning a bit about GIT and how to be a better designer. Today is 13th of March in 2026.
