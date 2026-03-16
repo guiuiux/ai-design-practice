@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gui — Product Designer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f5f5;
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 48px;
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .name {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .role {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 6px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #e5e5e5;
+      margin: 32px 0;
+    }
+
+    .skills-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 14px;
+    }
+
+    .skills {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .skills li {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .skills li::before {
+      content: "→";
+      margin-right: 10px;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 class="name">Gui</h1>
+    <p class="role">Product Designer at Telus Digital</p>
+    <hr class="divider">
+    <p class="skills-label">Skills</p>
+    <ul class="skills">
+      <li>Motion Design</li>
+      <li>User Interface</li>
+      <li>Interaction Design</li>
+    </ul>
+  </div>
+</body>
+</html>
