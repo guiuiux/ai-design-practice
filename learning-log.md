@@ -39,6 +39,21 @@
 ### Best findings
 I realized that for my experimental projects I don't need to create a repo in Github, I can start a local repo, do local commits, if the project grows, I can take it to cloud.
 
+## Working with Claude Code
+
+### Branch-First Rule
+**Always create a branch before letting Claude do any work.** Claude should never create or edit files while on `main`.
+
+### Workflow
+1. **Check branch** — Make sure you're not on `main`
+2. **Branch first** — Create a feature branch before any file work begins
+3. **Then let Claude work** — Only after branching is confirmed
+
+### Why This Matters
+- Keeps `main` clean and stable
+- All AI-assisted work stays isolated until reviewed
+- Easy to discard or revise without affecting the base project
+
 ---
 
-*Updated: March 13, 2026*
+*Updated: March 16, 2026*
