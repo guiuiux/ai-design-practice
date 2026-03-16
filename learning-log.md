@@ -54,6 +54,32 @@ I realized that for my experimental projects I don't need to create a repo in Gi
 - All AI-assisted work stays isolated until reviewed
 - Easy to discard or revise without affecting the base project
 
+### Prompting — Be Specific, Not Vague
+
+Tested two approaches while building a navbar component.
+
+**Vague prompt:**
+> "make a navbar"
+
+Claude delivered something functional, but generic. No context about the file, the stack, the content, or the look — so the output required follow-up corrections.
+
+**Specific prompt:**
+> "Create a navbar in navbar.html. It should have 3 links: Home, Work, Contact. Use only HTML and CSS, no frameworks. Fixed to the top of the page. Background color #1a1a1a, white text, clean and minimal with microinteractions."
+
+First output matched the intent. No back-and-forth needed.
+
+**Why it worked — the prompt covered all five layers:**
+
+| Layer | What it answers |
+|---|---|
+| **Context** | Standalone file (`navbar.html`), no framework |
+| **Task / Action** | Create a navbar |
+| **What it contains** | 3 links: Home, Work, Contact |
+| **Constraints** | HTML and CSS only, fixed to top |
+| **Visual specs / Output** | `#1a1a1a` background, white text, minimal, microinteractions |
+
+**Key takeaway:** The more specific the prompt, the closer the first output is to the intended result. Vague prompts produce generic outputs. Treat Claude like a skilled collaborator — give it the full brief, not just the task title.
+
 ---
 
 *Updated: March 16, 2026*
