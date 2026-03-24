@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;600&family=Epilogue:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #1a1a1a;
+      color: #f0ece3;
+      font-family: 'Epilogue', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background-color: #222222;
+      border: 1px solid #2e2e2e;
+      border-radius: 12px;
+      padding: 40px;
+      width: 100%;
+      max-width: 440px;
+    }
+
+    h1 {
+      font-family: 'Clash Display', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #f0ece3;
+      margin-bottom: 32px;
+    }
+
+    .setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid #2e2e2e;
+    }
+
+    .setting-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .setting-label {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #f0ece3;
+    }
+
+    .setting-description {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 3px;
+    }
+
+    /* Toggle */
+    .toggle-wrapper {
+      position: relative;
+      width: 48px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .toggle-wrapper input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+      position: absolute;
+    }
+
+    .toggle-track {
+      position: absolute;
+      inset: 0;
+      background-color: #3a3a3a;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .toggle-track::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background-color: #f0ece3;
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+    }
+
+    .toggle-wrapper input:checked + .toggle-track {
+      background-color: #c8b89a;
+    }
+
+    .toggle-wrapper input:checked + .toggle-track::after {
+      transform: translateX(22px);
+      background-color: #3a3a3a;
+    }
+
+    .toggle-wrapper input:focus-visible + .toggle-track {
+      outline: 2px solid #c8b89a;
+      outline-offset: 2px;
+    }
+
+    /* Dropdown */
+    .select-wrapper {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    select {
+      appearance: none;
+      background-color: #2e2e2e;
+      color: #f0ece3;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.875rem;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      padding: 8px 36px 8px 12px;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    select:hover {
+      border-color: #555;
+    }
+
+    select:focus {
+      outline: 2px solid #c8b89a;
+      outline-offset: 2px;
+      border-color: transparent;
+    }
+
+    .select-wrapper::after {
+      content: '';
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 5px solid #888;
+      pointer-events: none;
+    }
+
+    /* Save button */
+    .actions {
+      margin-top: 32px;
+    }
+
+    .btn-save {
+      width: 100%;
+      padding: 14px;
+      background-color: #c8b89a;
+      color: #1a1a1a;
+      font-family: 'Epilogue', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn-save:hover {
+      background-color: #d6c9b0;
+    }
+
+    .btn-save:active {
+      opacity: 0.85;
+    }
+
+    .btn-save:focus-visible {
+      outline: 2px solid #c8b89a;
+      outline-offset: 3px;
+    }
+
+    /* Saved confirmation */
+    .save-confirm {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #c8b89a;
+      margin-top: 12px;
+      min-height: 18px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .save-confirm.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Settings</h1>
+
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">Dark mode</div>
+        <div class="setting-description">Use a dark background across the app</div>
+      </div>
+      <label class="toggle-wrapper" aria-label="Toggle dark mode">
+        <input type="checkbox" id="dark-mode" checked>
+        <span class="toggle-track"></span>
+      </label>
+    </div>
+
+    <div class="setting-row">
+      <div>
+        <div class="setting-label">Language</div>
+        <div class="setting-description">Choose your preferred language</div>
+      </div>
+      <div class="select-wrapper">
+        <select id="language" aria-label="Select language">
+          <option value="en">English</option>
+          <option value="fr">French</option>
+          <option value="pt">Portuguese</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-save" onclick="saveSettings()">Save settings</button>
+      <p class="save-confirm" id="confirm-msg" aria-live="polite">Settings saved</p>
+    </div>
+  </div>
+
+  <script>
+    function saveSettings() {
+      const msg = document.getElementById('confirm-msg');
+      msg.classList.add('visible');
+      clearTimeout(msg._timer);
+      msg._timer = setTimeout(() => msg.classList.remove('visible'), 2500);
+    }
+  </script>
+
+</body>
+</html>
